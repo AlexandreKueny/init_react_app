@@ -18,5 +18,9 @@
     "cheerio": "^1.0.0-rc.10",
     "commander": "^9.0.0",
     "fs-extra": "^10.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexandreKueny/init_react_app.git"
   }
 }
