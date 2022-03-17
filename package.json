@@ -4,7 +4,8 @@
   "description": "Init a React app with additional packages, scripts and components",
   "main": "index.js",
   "scripts": {
-    "link": "npm link"
+    "link": "npm link",
+    "publish": "npm publish --access public"
   },
   "private": false,
   "bin": {
