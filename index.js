@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { program } = require('commander');
-// const chalk = require('chalk');
+const chalk = require('chalk');
 const { spawnSync } = require('child_process');
 const { join } = require('path');
 const fse = require('fs-extra');
@@ -41,15 +41,16 @@ const additionalHeadTags = [
     '<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">',
 ];
 
-// console.log(chalk.yellow(`Welcome to React init`));
+console.log(chalk.yellow(`Welcome to init-react-app`));
 
 // program.version(version).description(description);
 
 const onDone = () => {
-    // console.log(chalk.yellow(`Done`));
+    console.log(chalk.yellow(`Done`));
 }
 
 const spawnCreateReactApp = (appName, options) => {
+    console.log(chalk.yellow(`Creating standard React app`));
     return spawnSync('npx', [
         'create-react-app',
         '--template',
@@ -62,6 +63,7 @@ const spawnCreateReactApp = (appName, options) => {
 }
 
 const spawnNpmInstall = (appName) => {
+    console.log(chalk.yellow(`Installing additional packages`));
     return spawnSync('npm', [
         'i',
         ...additionalLibraries
@@ -73,6 +75,7 @@ const spawnNpmInstall = (appName) => {
 }
 
 const spawnNpmInstallDev = (appName) => {
+    console.log(chalk.yellow(`Installing additional dev packages`));
     return spawnSync('npm', [
         'i',
         '--save-dev',
@@ -85,12 +88,14 @@ const spawnNpmInstallDev = (appName) => {
 }
 
 const copyAdditionalFiles = (appName) => {
+    console.log(chalk.yellow(`Copying additional files`));
     for (let file of additionalFiles) {
         fse.copySync(join(__dirname, file), join(process.cwd(), appName, file.split('/').slice(-1)[0]))
     }
 }
 
 const setAdditionalScripts = (appName) => {
+    console.log(chalk.yellow(`Adding custom npm scripts`));
     const packageObj = fse.readJsonSync(join(process.cwd(), appName, 'package.json'))
     packageObj['scripts'] = {
         ...packageObj['scripts'],
@@ -100,10 +105,12 @@ const setAdditionalScripts = (appName) => {
 }
 
 const copyAdditionalComponents = (appName) => {
+    console.log(chalk.yellow(`Adding basic components`));
     fse.copySync(join(__dirname, '/templates/src'), join(process.cwd(), appName, 'src'))
 }
 
 const setAdditionalHeadTags = (appName) => {
+    console.log(chalk.yellow(`Adding custom lines to index.html`));
     fs.readFile(join(process.cwd(), appName, 'public', 'index.html'), 'utf-8', (err, data) => {
         const $ = cheerio.load(data);
         for (let tag of additionalHeadTags) {
@@ -118,7 +125,7 @@ const execCommands = (appName, commands) => {
     for (let command of commands) {
         const result = command(appName);
         if (result.status !== 0) {
-            // console.log(chalk.yellow(`Something wrong happened`));
+            console.log(chalk.yellow(`Something wrong happened`));
             break;
         }
     }
