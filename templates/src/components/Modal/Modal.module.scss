@@ -1,0 +1,19 @@
+.modal {
+  border: none;
+  border-radius: 8px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .close {
+      cursor: pointer;
+    }
+  }
+
+  .content {
+
+  }
+}
