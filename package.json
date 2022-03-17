@@ -1,0 +1,22 @@
+{
+  "name": "@alexandre_kueny/init-react-app",
+  "version": "1.0.0",
+  "description": "Init a React app with additional packages, scripts and components",
+  "main": "index.js",
+  "scripts": {
+    "link": "npm link"
+  },
+  "private": false,
+  "bin": {
+    "init-react-app": "index.js"
+  },
+  "keywords": [],
+  "author": "Alexandre Kueny",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cheerio": "^1.0.0-rc.10",
+    "commander": "^9.0.0",
+    "fs-extra": "^10.0.1"
+  }
+}

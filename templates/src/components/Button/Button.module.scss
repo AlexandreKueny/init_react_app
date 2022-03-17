@@ -1,0 +1,41 @@
+.button {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+
+  &.plain {
+    min-height: 48px - 16px;
+    background: blue;
+    color: white;
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &.disabled {
+      background: gray;
+      cursor: default;
+    }
+  }
+
+  &.outline {
+    min-height: 48px - 16px - 4px;
+    background: white;
+    border: 2px solid blue;
+    color: blue;
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &.disabled {
+      border: 2px solid gray;
+      color: gray;
+      cursor: default;
+    }
+  }
+}

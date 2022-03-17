@@ -1,0 +1,27 @@
+.collapse {
+  border-bottom: 1px solid gray;
+
+  .head {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .titles {
+      margin-left: 8px;
+
+      .tile {
+        margin: 0;
+      }
+
+      .subtitle {
+        margin: 0;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .content {
+    padding: 8px;
+  }
+}

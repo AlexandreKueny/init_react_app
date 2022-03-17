@@ -1,0 +1,31 @@
+.checkbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &.disabled {
+    cursor: default;
+
+    .label {
+      color: gray;
+    }
+
+    .box {
+      color: gray;
+    }
+  }
+
+  .label {
+    margin: 0;
+  }
+
+  .box {
+    color: blue;
+    margin-right: 8px;
+
+    &.reversed {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+  }
+}
