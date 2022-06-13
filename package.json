@@ -1,6 +1,6 @@
 {
   "name": "@alexandre_kueny/init-react-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Init a React app with additional packages, scripts and components",
   "main": "index.js",
   "scripts": {
