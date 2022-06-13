@@ -1,3 +1,5 @@
+@import "src/mixins/ripple";
+
 .radio {
   &.inline {
     display: flex;
@@ -10,6 +12,10 @@
     display: flex;
     align-items: center;
     margin-top: 8px;
+    width: fit-content;
+    position: relative;
+
+    @include ripple(blue);
 
     &.disabled {
       cursor: default;
@@ -51,3 +57,4 @@
     }
   }
 }
+@include ripple-keyframes;

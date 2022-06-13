@@ -1,22 +1,26 @@
-import React, { FC, useState } from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 import styles from './Collapse.module.scss';
 import AnimateHeight from 'react-animate-height';
+import useRipple from "../../hooks/useRipple";
 
 interface CollapseProps {
     title: string;
     subtitle?: string;
+    ripple?: boolean;
 }
 
-const Collapse: FC<CollapseProps> = ({
-                                         title,
-                                         subtitle,
-                                         children,
-                                     }) => {
+const Collapse: FC<PropsWithChildren<CollapseProps>> = ({
+                                                            title,
+                                                            subtitle,
+                                                            ripple = true,
+                                                            children,
+                                                        }) => {
     const [opened, setOpened] = useState(false);
+    const rippleRef = useRipple<HTMLDivElement>(ripple, styles);
 
     return (
         <div className={styles.collapse} data-testid="collapse">
-            <div className={styles.head} onClick={() => setOpened(!opened)}>
+            <div className={styles.head} onClick={() => setOpened(!opened)} ref={rippleRef}>
                 <span className="material-icons">{opened ? 'expand_less' : 'expand_more'}</span>
                 <div className={styles.titles}>
                     <p className={styles.tile}>{title}</p>

@@ -1,7 +1,13 @@
+@import "src/mixins/ripple";
+
 .checkbox {
   cursor: pointer;
   display: flex;
   align-items: center;
+  position: relative;
+  width: fit-content;
+
+  @include ripple(blue);
 
   &.disabled {
     cursor: default;
@@ -29,3 +35,5 @@
     }
   }
 }
+
+@include ripple-keyframes;

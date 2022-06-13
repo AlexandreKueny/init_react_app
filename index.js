@@ -49,7 +49,7 @@ const onDone = () => {
     console.log(chalk.yellow(`Done`));
 }
 
-const spawnCreateReactApp = (appName, options) => {
+const spawnCreateReactApp = (appName, _options) => {
     console.log(chalk.yellow(`Creating standard React app`));
     return spawnSync('npx', [
         'create-react-app',
@@ -111,13 +111,12 @@ const copyAdditionalComponents = (appName) => {
 
 const setAdditionalHeadTags = (appName) => {
     console.log(chalk.yellow(`Adding custom lines to index.html`));
-    fs.readFile(join(process.cwd(), appName, 'public', 'index.html'), 'utf-8', (err, data) => {
+    fs.readFile(join(process.cwd(), appName, 'public', 'index.html'), 'utf-8', (_readErr, data) => {
         const $ = cheerio.load(data);
         for (let tag of additionalHeadTags) {
             $('head').append(`    ${tag}\n`);
         }
-        fs.writeFile(join(process.cwd(), appName, 'public', 'index.html'), $.html(), (err, data) => {
-        });
+        fs.writeFile(join(process.cwd(), appName, 'public', 'index.html'), $.html(), (_writeErr) => null);
     })
 }
 

@@ -1,3 +1,5 @@
+@import "src/mixins/ripple";
+
 .collapse {
   border-bottom: 1px solid gray;
 
@@ -6,6 +8,10 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    @include ripple(blue);
 
     .titles {
       margin-left: 8px;
@@ -25,3 +31,5 @@
     padding: 8px;
   }
 }
+
+@include ripple-keyframes;

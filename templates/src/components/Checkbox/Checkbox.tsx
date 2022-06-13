@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Checkbox.module.scss';
 import classnames from 'classnames';
+import useRipple from "../../hooks/useRipple";
 
 interface CheckboxProps {
     checked?: boolean;
@@ -8,6 +9,7 @@ interface CheckboxProps {
     label?: string;
     labelPosition?: 'left' | 'right';
     disabled?: boolean;
+    ripple?: boolean;
 }
 
 const Checkbox: FC<CheckboxProps> = ({
@@ -15,15 +17,18 @@ const Checkbox: FC<CheckboxProps> = ({
                                          onChange,
                                          label,
                                          labelPosition = 'right',
+    ripple = true,
                                          disabled,
                                      }) => {
+    const rippleRef = useRipple<HTMLDivElement>(ripple, styles);
+
     const handleClick = () => {
         if (disabled) return;
         onChange?.(!checked);
     }
 
     return (
-        <div className={classnames(styles.checkbox, disabled && styles.disabled)} data-testid="checkbox" onClick={handleClick}>
+        <div className={classnames(styles.checkbox, disabled && styles.disabled)} data-testid="checkbox" onClick={handleClick} ref={rippleRef}>
             {label && labelPosition === 'left' && <p className={styles.label}>{label}</p>}
             <span
                 className={classnames('material-icons', styles.box, labelPosition === 'left' && styles.reversed)}
